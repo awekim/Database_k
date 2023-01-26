@@ -1,0 +1,20 @@
+If you are an R user, and try to connect R to MySQL,
+you may face this error saying "Failed to connect to database: Error: Plugin caching_sha2_password could not be loaded".
+
+I noticed that this problem happens when old mysqlclient version or libmariadbclicent isn't installed.
+I have found the solutions from the link below, and added more details to it   
+"https://stackoverflow.com/questions/54099722/how-to-connect-r-to-mysql-failed-to-connect-to-database-error-plugin-caching/54101124"
+
+Step 1) Open the mySql 8.0 command client
+- Once you open the command file, it asks you for the password. This password should be the one you set for the installaion.
+
+Step 2) Reset the current user password
+- Type the following command,
+'root'@'localhost'='yourpassword';
+- In MySQL command line, all your command should finish with ; to run the code.
+- If it worked well, you should receive the response saying "Query OK, 0 rows affected"
+
+Step 3) Change the mysql native password
+- type the following command,
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'yourpassword'; 
+- If it worked well, you should receive the response saying "Query OK, 0 rows affected"
