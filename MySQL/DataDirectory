@@ -1,0 +1,18 @@
+### How to change data directory of MySQL
+# This is useful when you want to set up MySQL database to the external drive
+
+1. Open services.msc and stop MySQL
+
+2. Go to C:\ProgramData\MySQL\MySQL Server 8.0,
+(this folder is hidden, so you better change click "view-Hidden items")
+and copy "Data" folder.
+Then, paste it into the new directory where you want to change the data directory.
+Here, right click the "Data" folder -> Security -> Edit -> Give all permissions to Users
+
+3. Go back to C:\ProgramData\MySQL\MySQL Server 8.0 and 
+right click my.ini -> Security -> Edit -> Give all permissions to Users
+
+4. Open my.ini and change
+datadir="new directory"
+
+5. Open services.msc and start MySQL
