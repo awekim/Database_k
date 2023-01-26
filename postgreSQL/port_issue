@@ -1,0 +1,14 @@
+# If you have a problem connecting to the posgreSQL server,
+# change the port from 5444 to 5433 or 5432
+
+<services.msc>
+1. Turn it off
+
+<postgresql.conf>
+1. change 'port = 5432'
+
+<PgAdmin side>
+1. Go to PgAdmin
+2. Right click on PostgreSQL 3.Choose properties
+3. At the top, select connection
+4. Change port number.
