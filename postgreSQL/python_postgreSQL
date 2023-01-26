@@ -1,0 +1,24 @@
+import psycopg2
+
+conn = psycopg2.connect(host="hostname", dbname="dbname",
+                        user="username", password="pw", port=5432)
+
+cur = conn.cursor()
+
+### Create table
+cur.execute("DROP TABLE IF EXISTS arora_patents;")
+cur.execute("CREATE TABLE arora_patents(publn_nr serial, 
+             publn_kind VARCHAR(50), pat_publn_id integer, appln_id integer, 
+             publn_year integer, name_std VARCHAR(255), id_name integer,
+             sample VARCHAR(1), permno_adj integer, id_name1 VARCHAR(50)")
+conn.commit() # Send Query to PostgreSQL
+
+### Receive result
+cur.execute("SELECT ~~~")
+
+result_one = cur.fetchone() # tuple
+result_many = cur.fetchmany(2) # array of tuple
+result_all = cur.fetchall()
+
+cur.close()
+conn.close()
