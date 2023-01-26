@@ -1,0 +1,9 @@
+# Update phpMyAdmin Language
+
+1. Copy the link address of the update file
+(In my case, https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-all-languages.zip)
+2. Open SSH
+3. wget [link-addres] --no-check-certificate
+(In my case, wget https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-all-languages.zip --no-check-certificate
+4. unzip phpMyAdmin-5.2.0-all-languages.zip
+5. Completed! 
