@@ -1,0 +1,25 @@
+# Affiliations.text
+
+CREATE TABLE affiliations (
+    AffiliationId long,
+    mRank int,
+    NormalizedName text,
+    DisplayName text,
+    GridId text,
+    OfficialPage text,
+    WikiPage text,
+    PaperCount double,
+    CitationCount double,
+    CreatedDate text
+  #  PRIMARY KEY (AffiliationId)
+);
+
+LOAD DATA INFILE 'C:/Users/aweki/Downloads/affiliations.csv' # or LOAD DATA INFILE 'F:/MAG/MAG_zenedo_2019/Affiliations.txt' 
+INTO TABLE affiliations 
+FIELDS TERMINATED BY ',' # FIELDS TERMINATED BY '\t' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+# If you receive an error message saying "Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+", go to MAG_MySQL/MySQL_import_error
