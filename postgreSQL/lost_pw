@@ -1,0 +1,16 @@
+# https://www.postgresqltutorial.com/postgresql-administration/postgresql-reset-password/
+1. Backup the pg_hba.conf
+- host-based authentication
+- C:\Program Files\PostgreSQL\11\data
+- To reset the password for the postgres user, modify some parameters in this configuration file, 
+- login as postgres without a password, and reset the password.
+
+2. Edit the pg_dba.conf file and change all local connections from md5 to trust. 
+- You can log in to the PostgreSQL database server without using a password.
+
+3. Restart the PostgreSQL server. 
+
+4. Connect to PostgreSQL database server using any tool such as psql or pgAdmin:
+pg_ctl -D "C:\Program Files\PostgreSQL\12\data" restart
+psql -U postgres
+postgres=# ALTER USER postgres WITH PASSWORD 'new_password';
