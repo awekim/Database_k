@@ -1,0 +1,26 @@
+# Brief explanation on how to set up mysql to Docker
+
+1. Open cmd
+2. Run following commands
+>> pull mysql
+>> docker iamges
+>> docker run --name mysql01 -p 3306:3306 -e MYSQL_ROOT_PASSWORD="<PASSWORD>" -d mysql
+>> docker ps -a
+
+# (1) docker run : docker image에서 container를 생성한다.
+# (2) –name mysql01 : container의 이름은 mysql01로 한다.
+# (3) -p 3306:3306 : 해당 container의 port forwarding에 대해 inbound/outbound port 모두 3306으로 설정한다.
+# (4) -e : container 내 변수를 설정한다.
+# (5) MYSQL_ROOT_PASSWORD=”암호” : ROOT 암호를 설정 따옴표 내의 내용은 암호이다.
+# (6) -d mysql : mysql이라는 이미지에서 분리하여 container를 생성한다.
+
+>> docker exec --user="root" -it mysql01 bash
+>> bash-4.4# mysql --user=root --password="<PASSWORD>"
+
+If following error appears,
+Unable to load authentication plugin 'caching_sha2_password'.
+
+>> docker exec --user="root" -it mysql01 bash
+>> bash-4.4# mysql --user=root --password="<PASSWORD>"
+>> alter user 'root'@'localhost' identified with mysql_native_password by '1009';
+>> flush privileges;
