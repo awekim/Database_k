@@ -1,0 +1,5 @@
+Public Key Retrieval is not allowed
+
+1. Open DBeaver
+2. Driver properties
+3. allowPublicKeyRetrieval = TRUE
