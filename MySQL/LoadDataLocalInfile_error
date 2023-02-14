@@ -1,0 +1,15 @@
+When importing .txt files to table in MYSQL, if 
+"LOAD DATA LOCAL INFILE file request rejected due to restrictions on access" error message shows,
+
+Step 1.
+1. MySQL Workbench --> Edit Connection --> Connection --> Advanced 
+- Add OPT_LOCAL_INFILE=1
+
+Step 2.
+1. Turn off MySQL
+2. Open my.ini
+3. Find [client] 
+- Add local_infile=ON
+4. Find [mysqld]
+- Add local_infile=ON
+

@@ -1,0 +1,5 @@
+Whenever error occurs and you cannot find the solution, here's the quickest way of finding it.
+
+1. Go to Data folder.
+2. Find .err file & open with text editor.
+3. Check the latest date and find where the error comes from.
