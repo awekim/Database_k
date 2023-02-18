@@ -2,7 +2,7 @@
 
 1. Open cmd
 2. Run following commands
->> pull mysql
+>> docker pull mysql
 >> docker iamges
 >> docker run --name mysqldocker -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1009 -v D:/MySQL/docker/data -d mysql 
 # Remove quotation for password
