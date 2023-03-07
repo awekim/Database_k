@@ -6,3 +6,11 @@ innodb_log_file_size = 1G
 innodb_write_io_threads = 16
 innodb_flush_log_at_trx_commit = 0
 innodb_doublewrite = 0
+
+# Consider following option, if import is so slow
+innodb_buffer_pool_size=2G
+innodb_log_file_size=512M
+innodb_read_io_threads=64
+innodb_write_io_threads=64
+innodb_io_capacity=5000
+innodb_thread_concurrency=0
