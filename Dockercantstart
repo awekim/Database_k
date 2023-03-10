@@ -1,0 +1,8 @@
+IF following error message appears when running Docker
+"Hardware assisted virtualization and data execution protection must be enabled in the BIOS." 
+this may be an issue of Hyper-V.
+
+1. If you are Windows Home user, you cannot use it.
+2. IF not, open Terminal and run the following codes.
+> Enable Hypervisor with following command - bcdedit /set hypervisorlaunchtype auto
+> Enable Hyper V - You can do this by running the following command as administrator. - dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
