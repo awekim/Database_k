@@ -1,0 +1,24 @@
+
+Open Powershell.
+1. Install Docker
+$ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+2. Activate VirtualMachinePlatform
+$ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+3. Download nad Install Linux Kernel Update Package
+https://learn.microsoft.com/ko-kr/windows/wsl/install-manual
+
+4. Set wsl2 as default version
+$ wsl --set-default-version 2
+
+5. Go to Microsoft Store & Install Ubuntu
+
+6. check wsl version
+$ wsl -l -v
+
+7. Change it to version 2 if it's version 1. 
+$ wsl --set-version Ubuntu 2
+
+8. Install Docker
+https://www.docker.com/products/docker-desktop
