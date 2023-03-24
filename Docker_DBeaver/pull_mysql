@@ -4,7 +4,9 @@
 2. Run following commands
 >> docker pull mysql
 >> docker iamges
->> docker run --name mysqldocker -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1009 -v D:/MySQL/docker/data -d mysql 
+>> docker run -d -p 33600:3306 -e MYSQL_ROOT_PASSWORD=1009 --name mysqldocker mysql:latest
+# >> docker run --name mysqldocker -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1009 -v D:/MySQL/docker/data -d mysql 
+# >> docker run --name mysqldocker -p 33600:33600 -e MYSQL_ROOT_PASSWORD=1009 -v D:/MySQL/docker/data -d mysql 
 # Remove quotation for password
 # -v D:/PostgreSQL/docker/data # change data directory
 >> docker ps -a
