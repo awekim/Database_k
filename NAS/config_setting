@@ -1,1 +1,5 @@
 ls -l /../../@appstore/MariaDB10/usr/local/mariadb10/etc/mysql/my.cnf
+
+sudo chmod 644 /../../@appstore/MariaDB10/usr/local/mariadb10/etc/mysql/my.cnf
+
+vi /../../@appstore/MariaDB10/usr/local/mariadb10/etc/mysql/my.cnf
