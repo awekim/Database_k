@@ -1,10 +1,13 @@
 1. log-in as admin
 
-2. 
+2. Change to root
 >>> sudo -i
 
->>> ls -l /../../@appstore/MariaDB10/usr/local/mariadb10/etc/mysql/my.cnf
+3. Check permission of config file
+>>> ls -l /../../volume1/@appstore/MariaDB10/usr/local/mariadb10/etc/mysql/my.cnf
 
->>> sudo chmod 644 /../../@appstore/MariaDB10/usr/local/mariadb10/etc/mysql/my.cnf
+4. Change permission of config file
+>>> sudo chmod 644 /../../volume1/@appstore/MariaDB10/usr/local/mariadb10/etc/mysql/my.cnf
 
->>> vi /../../@appstore/MariaDB10/usr/local/mariadb10/etc/mysql/my.cnf
+5. Edit config file
+>>> vi /../../volume1/@appstore/MariaDB10/usr/local/mariadb10/etc/mysql/my.cnf
