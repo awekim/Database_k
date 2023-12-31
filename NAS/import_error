@@ -1,3 +1,5 @@
 - Open .dump file
-- find utf8mb4_0900_ai_ci and change it to utf8_general_ai_ci
-- find utf8mb4 and change it to utf8
+1. Find
+ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+2. Change it to
+ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
