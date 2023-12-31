@@ -1,0 +1,3 @@
+- Open .dump file
+- find utf8mb4_0900_ai_ci and change it to utf8_general_ai_ci
+- find utf8mb4 and change it to utf8
