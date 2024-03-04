@@ -15,3 +15,53 @@ ALTER TABLE myTable CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci
 
 - Or open Linux ternal and run following code
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos_publications.sql
+
+
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_assignee.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_botanic.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_cpc_current.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_cpc_group.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_cpc_subgroup.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_cpc_subsection.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_figures.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_foreign_priority.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_government_interest.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_government_organization.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_inventor.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_inventor_gender.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_ipcr.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_lawyer.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_location.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_location_geocoded2.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_mainclass.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_mainclass_current.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_nber.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_nber_category.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_nber_subcategory.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_non_inventor_applicant.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_otherreference.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_patent.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_patent_assignee.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_patent_contractawardnumber.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_patent_govintorg.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_patent_inventor.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_patent_lawyer.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_pct_data.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_rawassignee.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_rawexaminer.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_rawinventor.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_rawlawyer.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_rawlocation.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_rel_app_text.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_routines.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_standardaddresses.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_subclass.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_subclass_current.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_us_term_of_grant.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_usapplicationcitation.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_uspatentcitation.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_uspc.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_uspc_current.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_usreldoc.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_wipo.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_wipo_field.sql
