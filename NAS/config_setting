@@ -79,3 +79,20 @@ plugin_load_add = synology_password_check
 !include /var/packages/MariaDB10/etc/my.cnf
 !include /var/packages/MariaDB10/etc/my_port.cnf
 !include /var/packages/MariaDB10/etc/synology.cnf
+
+
+##### Extra option
+#innodb_buffer_pool_size = 4G
+#innodb_log_buffer_size = 256M
+#innodb_log_file_size = 1G
+#innodb_write_io_threads = 16
+#innodb_flush_log_at_trx_commit = 0
+
+#innodb_buffer_pool_size will cache frequently read data
+#innodb_log_buffer_size : Larger buffer reduces write I/O to Transaction Logs
+#innodb_log_file_size : Larger log file reduces checkpointing and write I/O
+#innodb_write_io_threads : Service Write Operations to .ibd files. According to MySQL Documentation on Configuring the Number of Background InnoDB I/O Threads, each thread can handle up to 256 pending I/O requests. Default for MySQL is 4, 8 for Percona Server. Max is 64.
+#innodb_flush_log_at_trx_commit
+#In the event of a crash, both 0 and 2 can lose once second of data.
+#The tradeoff is that both 0 and 2 increase write performance.
+#I choose 0 over 2 because 0 flushes the InnoDB Log Buffer to the Transaction Logs (ib_logfile0, ib_logfile1) once per second, with or without a commit. Setting 2 flushes the InnoDB Log Buffer only on commit. There are other advantages to setting 0 mentioned by @jynus, a former Percona instructor.
