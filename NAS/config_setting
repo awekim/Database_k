@@ -11,7 +11,7 @@
 
 5. Edit config file
 >>> vi /../../volume1/@appstore/MariaDB10/usr/local/mariadb10/etc/mysql/my.cnf
-(i: edit, !wq!: save and exit)
+(i - edit, :wq! - save and exit)
 
 (Edited .config file)
 # references: https://forum.kodi.tv/showthread.php?tid=204620
