@@ -16,7 +16,6 @@ ALTER TABLE myTable CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci
 - Or open Linux ternal and run following code
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos_publications.sql
 
-
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_assignee.sql
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_botanic.sql
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_cpc_current.sql
@@ -65,3 +64,15 @@ sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsv
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_usreldoc.sql
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_wipo.sql
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_wipo_field.sql
+
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos__reprint_org.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos__inst2.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos__institutionsold.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos__keywords_plus.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos__keywords_plusold.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos__keywordsold.sq
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos__publicationsold.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos__recchk.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos__reprint_addresses.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos__reprint_authors.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos__reprint_org.sql
