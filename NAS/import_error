@@ -80,3 +80,12 @@ sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/GeoCoding_DB_dumps/Dump20240520_WoS/wos_wos_geoboundaries_geo2024-002.sql
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/GeoCoding_DB_dumps/Dump20240520_WoS/wos_wos_gua_geo2024-004.sql
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/GeoCoding_DB_dumps/Dump20240520_WoS/wos_wos_regmap_geo2024.sql
+
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/GeoCoding_DB_dumps/Dump20240523_PATSTAT/fullpat_patstat_regmap_geo2024-001.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/GeoCoding_DB_dumps/Dump20240523_PATSTAT/fullpat_patstat_gua_geo2024.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/GeoCoding_DB_dumps/Dump20240523_PATSTAT/fullpat_patstat_geoboundaries_geo2024.sql
+
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/GeoCoding_DB_dumps/Dump20240523_PATVIEW/patentsview2023_patview_geoboundaries_geo2024.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/GeoCoding_DB_dumps/Dump20240523_PATVIEW/patentsview2023_patview_gua_geo2024.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/GeoCoding_DB_dumps/Dump20240523_PATVIEW/patentsview2023_patview_regmap_geo2024.sql
+
