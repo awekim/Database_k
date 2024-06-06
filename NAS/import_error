@@ -13,7 +13,7 @@ ENGINE=InnoDB AUTO_INCREMENT=31700514 DEFAULT CHARSET=utf8mb4
 - Or run the following query on each of affected tables
 ALTER TABLE myTable CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci
 
-- Or open Linux ternal and run following code
+- Or open Linux ternal and run following code (wsl)
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/wos2024/wos_publications.sql
 
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/patentsview2023/patentsview2023_assignee.sql
@@ -89,3 +89,10 @@ sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/GeoCoding_DB_dumps/Dum
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/GeoCoding_DB_dumps/Dump20240523_PATVIEW/patentsview2023_patview_gua_geo2024.sql
 sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/GeoCoding_DB_dumps/Dump20240523_PATVIEW/patentsview2023_patview_regmap_geo2024.sql
 
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/techevo2023/techevo2023_tetitabstract.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/techevo2023/techevo2023_terepperson.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/techevo2023/techevo2023_terepappl.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/techevo2023/techevo2023_terepcust.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/techevo2023/techevo2023_terepgroup.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/techevo2023/techevo2023_terepid_repgrid.sql
+sed -i 's/utf8mb4_0900_ai_ci/utf8mb4_general_ci/g' /mnt/e/dump_20240108/techevo2023/techevo2023_terepnames.sql
