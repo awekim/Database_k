@@ -13,3 +13,15 @@ sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_KR_Patent/'BACK~20221231(PriorTechnolo
 sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_KR_Patent/'BACK~20221231(RelatedPerson)'/RelatedPerson.txt
 sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_KR_Patent/'BACK~20221231(Rnd)'/Rnd.txt
 
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_JP_Patent/'back~20211231(JP_ABSTRACT)'/JP_ABSTRACT.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_JP_Patent/'back~20211231(JP_BIBLIO)'/JP_BIBLIO.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_JP_Patent/'back~20211231(JP_CTLTR)'/JP_CTLTR.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_JP_Patent/'back~20211231(JP_EPC)'/JP_EPC.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_JP_Patent/'back~20211231(JP_FAMILY)'/JP_FAMILY.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_JP_Patent/'back~20211231(JP_FI)'/JP_FI.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_JP_Patent/'back~20211231(JP_FTERM)'/JP_FTERM.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_JP_Patent/'back~20211231(JP_IPC)'/JP_IPC.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_JP_Patent/'back~20211231(JP_PRIR)'/JP_PRIR.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_JP_Patent/'back~20211231(JP_REL_PSN)'/JP_REL_PSN.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_JP_Patent/'back~20211231(JP_TEMA)'/JP_TEMA.txt
+
