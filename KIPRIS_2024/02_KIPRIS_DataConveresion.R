@@ -1,6 +1,6 @@
 #######################################################################
 ##  Made by: Dr. Keungoui Kim
-##  Title: KISDI Megatrend Project - Data Prep 01. Data Conversion
+##  Title: KISDI Megatrend Project - Data Prep 02. Data Conversion
 ##  goal : Megatrend Tech Analysis
 ##  Data set: KIPRIS
 ##  Time Span: 
@@ -43,10 +43,11 @@ dir.create(paste0("R file/",country.code))
 
 ### Load .txt file and convert it into Dataframe
 # This takes long time....!
-for (i in 1:length(file.list)){
+i<-1
+for (i in 2:length(file.list)){
   file.name <- list.files(path=paste0(directory.path,"KIPRIS_",country.code,"_Patent/",file.list[i]), 
                           pattern=NULL, all.files=FALSE, full.names=FALSE)
-  print("Reading files...")
+  print(paste("Reading files...",file.name))
   
   process_chunk <- function(lines, pos) {
     split_lines <- strsplit(lines, "@", fixed = TRUE)
@@ -90,19 +91,20 @@ for (i in 1:length(file.list)){
   data <- data[2:nrow(data),]
   
   assign(file.name, data) 
+  rm(data, all_chunks, combined_data)
   
   save(list = file.name, file = paste0("R file/",country.code,"/",file.name, ".RData"), envir = .GlobalEnv)
   
   print(i)
-  rm(file.name, data, all_chunks, combined_data)
-  rm(AdministrativeProcess, Bibliographic, CPC, DesignatedCountry,
-     Family, IPC, Priority, PriorTechnologyDocument, RelatedPerson,Rnd)
- 
+  rm(list = file.name)
+  rm(file.name)
 }
 
 # Check
 load(file="R file/file.name.set.RData")
-i<-2
-load(file=paste0("R file/",file.name.set[i],".RData"))
-Bibliographic %>% head(1)
+i<-1
+load(file=paste0("R file/",country.code,"/",file.name.set[i],".RData"))
+JP_ABSTRACT %>% head(1)
 
+JP_ABSTRACT[,which(is.na(names(data))==FALSE)]
+JP_ABSTRACT[,4][is.na(JP_ABSTRACT[,4])==FALSE] %>% unique %>% length
