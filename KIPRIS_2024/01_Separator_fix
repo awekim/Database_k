@@ -1,0 +1,15 @@
+- Open wsl terminal and run following code
+* ¶ is not easliy recognized in R
+* change directory if necessary
+
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_KR_Patent/'BACK~20221231(AdministrativeProcess)'/AdministrativeProcess.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_KR_Patent/'BACK~20221231(Bibliographic)'/Bibliographic.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_KR_Patent/'BACK~20221231(CPC)'/CPC.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_KR_Patent/'BACK~20221231(DesignatedCountry)'/DesignatedCountry.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_KR_Patent/'BACK~20221231(Family)'/Family.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_KR_Patent/'BACK~20221231(IPC)'/IPC.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_KR_Patent/'BACK~20221231(Priority)'/Priority.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_KR_Patent/'BACK~20221231(PriorTechnologyDocument)'/PriorTechnologyDocument.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_KR_Patent/'BACK~20221231(RelatedPerson)'/RelatedPerson.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_KR_Patent/'BACK~20221231(Rnd)'/Rnd.txt
+
