@@ -35,3 +35,13 @@ sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_US_Patent/'BACK~20221231(US_REL_APPL)'
 sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_US_Patent/'BACK~20221231(US_REL_PSN)'/US_REL_PSN.txt
 sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_US_Patent/'BACK~20221231(US_SEARCH)'/US_SEARCH.txt
 sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_US_Patent/'BACK~20221231(US_UPC)'/US_UPC.txt
+
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_EP_Patent/'back~20211231(EP_ABSTRACT)'/EP_ABSTRACT.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_EP_Patent/'BACK~20221231(EP_BIBLIO)'/EP_BIBLIO.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_EP_Patent/'BACK~20221231(EP_CPC)'/EP_CPC.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_EP_Patent/'BACK~20221231(EP_CTLTR)'/EP_CTLTR.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_EP_Patent/'BACK~20221231(EP_IPC)'/EP_IPC.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_EP_Patent/'BACK~20221231(EP_DSGN)'/EP_DSGN.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_EP_Patent/'BACK~20221231(EP_PRIR)'/EP_PRIR.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_EP_Patent/'BACK~20221231(EP_REL_PSN)'/EP_REL_PSN.txt
+sed -i 's/¶/@/g' /mnt/d/Downloads/KIPRIS_EP_Patent/'BACK~20221231(EP_EPC)'/EP_EPC.txt
