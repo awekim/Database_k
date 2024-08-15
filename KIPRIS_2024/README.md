@@ -1,1 +1,0 @@
-- This repository contains codes used for refining KIPRIS patent data
