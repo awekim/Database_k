@@ -1,0 +1,6 @@
+- "mysqldump Version Mismatch" 
+When exporting database to .dump files, this error may happen. 
+1. Visit MariaDB Database webpage and download relevent version of MariaDB (Windows & Zip).
+2. Find bin/mysqldump.exe 
+3. Go to Prefernce -> Administrator -> Path to mysqldump Tool 
+4. Paste the directory path of mysqldump.exe
