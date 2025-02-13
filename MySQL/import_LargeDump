@@ -16,8 +16,8 @@ innodb_io_capacity=5000
 innodb_thread_concurrency=0
 
 # In addition 
-innodb_log_buffer_size = 256M # 16M after import
-innodb_flush_log_at_trx_commit=2 # 1 after import
+innodb_log_buffer_size=16M # 16 normal 256 dump
+innodb_flush_log_at_trx_commit=1 # 1 normal 2 dump
 
 # Under 64G memory condition
 innodb_buffer_pool_size = 50G
