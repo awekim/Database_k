@@ -43,7 +43,7 @@ IGNORE 1 LINES;
 ########################################################################
 ### authors_gender
 # Bash
-Get-Content "I:/Data_for_practice/SciSciNet/SciSciNet_Authors_Gender/SciSciNet_Authors_Gender.tsv" | ForEach-Object { $_ -replace '\s+', "`t" } | Set-Content "I:/Data_for_practice/SciSciNet/SciSciNet_Authors_Gender/SciSciNet_Authors_Gender_new.tsv"
+Get-Content "I:/Data_for_practice/SciSciNet/SciSciNet_Authors_Gender/SciSciNet_Authors_Gender.tsv" | ForEach-Object { $_ -replace '\s+', "`t" } | Set-Content "I:/Data_for_practice/SciSciNet/SciSciNet_Authors_Gender/SciSciNet_Authors_Gender_new.tsv" -Encoding UTF8
 
 DROP TABLE IF EXISTS authors_gender;
 CREATE TABLE `authors_gender` (
@@ -241,18 +241,18 @@ IGNORE 1 LINES;
 ########################################################################
 ### Newsfeed_Metadata
 CREATE TABLE `Newsfeed_Metadata` (
-    `NewsfeedID` VARCHAR(255) PRIMARY KEY,       
+    `NewsfeedID` VARCHAR(255),       
     `Occurred_Time` DATETIME,                    
     `ObjectID` VARCHAR(255),                     
     `Subject_Information` TEXT                   
 );
 
-LOAD DATA LOCAL INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Newsfeed_Metadata.tsv'
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Newsfeed_Metadata.tsv'
 INTO TABLE `Newsfeed_Metadata`
 CHARACTER SET utf8mb4  
-FIELDS TERMINATED BY '\t'         -- 탭으로 구분된 경우
-ENCLOSED BY '"'                   -- 문자열은 큰따옴표로 감싸져 있을 때
-LINES TERMINATED BY '\n'          -- 각 행은 줄바꿈으로 구분
-IGNORE 1 LINES;                   -- 첫 번째 행은 헤더로 무시
+FIELDS TERMINATED BY '\t'         
+ENCLOSED BY '"'                   
+LINES TERMINATED BY '\n'          
+IGNORE 1 LINES;                   
 
 
