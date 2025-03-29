@@ -133,3 +133,90 @@ FIELDS TERMINATED BY '\t'
 ENCLOSED BY '"'                  
 LINES TERMINATED BY '\n'         
 IGNORE 1 LINES;                  
+
+########################################################################
+### Link_Newsfeed
+CREATE TABLE `Link_Newsfeed` (
+    `PaperID` BIGINT,                 
+    `NewsfeedID` VARCHAR(1000) NOT NULL
+);
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Link_Newsfeed.tsv'
+INTO TABLE `Link_Newsfeed`
+CHARACTER SET utf8mb4  
+FIELDS TERMINATED BY '\t'         
+ENCLOSED BY '"'                  
+LINES TERMINATED BY '\n'         
+IGNORE 1 LINES;                  
+
+########################################################################
+### Link_NIH
+CREATE TABLE `Link_NIH` (
+    `PaperID` BIGINT,                         
+    `NIH_Project_Number` VARCHAR(255),     
+    PRIMARY KEY (`PaperID`, `NIH_Project_Number`) 
+);
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Link_NIH.tsv'
+INTO TABLE `Link_Newsfeed`
+CHARACTER SET utf8mb4  
+FIELDS TERMINATED BY '\t'       
+ENCLOSED BY '"'                
+LINES TERMINATED BY '\n'       
+IGNORE 1 LINES;                
+
+########################################################################
+### Link_NobelLaureates
+CREATE TABLE `Link_NobelLaureates` (
+    `LaureateID` INT,                  
+    `PaperID` BIGINT,                  
+    `Type` TINYINT
+);
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Link_NobelLaureates.tsv'
+INTO TABLE `Link_NobelLaureates`
+CHARACTER SET utf8mb4  
+FIELDS TERMINATED BY '\t'       -- 탭으로 구분
+ENCLOSED BY '"'                -- 문자열이 큰따옴표로 감싸져 있을 경우
+LINES TERMINATED BY '\n'       -- 각 행은 줄바꿈으로 구분
+IGNORE 1 LINES;
+
+########################################################################
+### Link_NSF
+CREATE TABLE `Link_NSF` (
+    `NSF_Award_Number` VARCHAR(255),   
+    `PaperID` BIGINT,                  
+    `Type` VARCHAR(50),                
+    `Diff_ZScore` FLOAT,               
+    PRIMARY KEY (`NSF_Award_Number`, `PaperID`)  
+);
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Link_NSF.tsv'
+INTO TABLE `Link_NSF`
+CHARACTER SET utf8mb4  
+FIELDS TERMINATED BY '\t'      
+ENCLOSED BY '"'                
+LINES TERMINATED BY '\n'       
+IGNORE 1 LINES
+(@NSF_Award_Number, @PaperID, @Type, @Diff_ZScore)
+SET
+    `NSF_Award_Number` = @NSF_Award_Number,
+    `PaperID` = @PaperID,
+    `Type` = @Type,
+    `Diff_ZScore` = IF(@Diff_ZScore = '', NULL, @Diff_ZScore);
+
+########################################################################
+### Link_Patents
+CREATE TABLE `Link_Patents` (
+    `PaperID` BIGINT,
+    `PatentID` VARCHAR(255),
+    `Type` INT,
+    PRIMARY KEY (`PaperID`, `PatentID`)
+);
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Link_Patents.tsv'
+INTO TABLE `Link_Patents`
+FIELDS TERMINATED BY '\t'          
+ENCLOSED BY '"'                    
+LINES TERMINATED BY '\n'           
+IGNORE 1 LINES;                    
