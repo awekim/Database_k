@@ -118,3 +118,18 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'         
 IGNORE 1 LINES;                  
 
+########################################################################
+### Link_ClinicalTrials
+CREATE TABLE `Link_ClinicalTrials` (
+    `PaperID` BIGINT,                  
+    `NCT_Number` VARCHAR(20) NOT NULL, 
+    PRIMARY KEY (`PaperID`, `NCT_Number`) 
+)
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Link_ClinicalTrials.tsv'
+INTO TABLE `Link_ClinicalTrials`
+CHARACTER SET utf8mb4  
+FIELDS TERMINATED BY '\t'         
+ENCLOSED BY '"'                  
+LINES TERMINATED BY '\n'         
+IGNORE 1 LINES;                  
