@@ -13,32 +13,59 @@ USE sciscinet;
 
 ########################################################################
 ### affiliations
-CREATE TABLE `sciscinet`.`affiliations` (
-    AffiliationID INT PRIMARY KEY,           
-    Affiliation_Name VARCHAR(255) NOT NULL,   
-    GridID VARCHAR(255) DEFAULT NULL,         
-    Official_Page VARCHAR(255) DEFAULT NULL,  
-    ISO3166Code VARCHAR(3) DEFAULT NULL,      
-    Latitude FLOAT DEFAULT NULL,              
-    Longitude FLOAT DEFAULT NULL,             
-    H_index INT DEFAULT NULL,                 
-    Productivity INT DEFAULT NULL,            
-    Average_C10 FLOAT DEFAULT NULL,           
-    Average_LogC10 FLOAT DEFAULT NULL         
+CREATE TABLE Affiliations (
+    AffiliationID BIGINT PRIMARY KEY,   
+    Affiliation_Name VARCHAR(255),                                  
+    GridID VARCHAR(255),                                 
+    Official_Page TEXT,  
+    ISO3166Code CHAR(2),  
+    Latitude DECIMAL(10, 7),  
+    Longitude DECIMAL(10, 7), 
+    H_index INT,  
+    Productivity INT,  
+    Average_C10 DECIMAL(15, 5), 
+    Average_LogC10 DECIMAL(15, 5)
 );
 
-LOAD DATA LOCAL INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Affiliations.tsv'
-INTO TABLE sciscinet.affiliations
-CHARACTER SET utf8mb4      
-FIELDS TERMINATED BY '\t'       
-ENCLOSED BY '"'                 
-LINES TERMINATED BY '\n'        
-IGNORE 1 LINES;                 
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Affiliations.tsv'
+INTO TABLE `Affiliations`
+CHARACTER SET utf8mb4  
+FIELDS TERMINATED BY '\t'  
+LINES TERMINATED BY '\n'   
+IGNORE 1 LINES
+(AffiliationID, Affiliation_Name, GridID, Official_Page, ISO3166Code, @Latitude, @Longitude, H_index, Productivity, @Average_C10, @Average_LogC10)
+SET 
+    Latitude = NULLIF(@Latitude, ''),
+    Longitude = NULLIF(@Longitude, ''),
+    Average_C10 = NULLIF(@Average_C10, ''),
+    Average_LogC10 = NULLIF(@Average_LogC10, '');
 
 ########################################################################
 ### authors
+CREATE TABLE `authors` (
+    `AuthorID` BIGINT PRIMARY KEY,            
+    `Author_Name` VARCHAR(255) NOT NULL,   
+    `H_index` INT DEFAULT NULL,            
+    `Productivity` INT DEFAULT NULL,       
+    `Average_C10` FLOAT DEFAULT NULL,      
+    `Average_LogC10` FLOAT DEFAULT NULL   
+);
 
-
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Authors.tsv'
+INTO TABLE `sciscinet`.`authors_gender`
+CHARACTER SET utf8mb4      
+FIELDS TERMINATED BY '\t'  
+ENCLOSED BY '"'            
+LINES TERMINATED BY '\n'   
+IGNORE 1 LINES
+(AuthorID, Author_Name, @H_index, Productivity, @Average_C10, @Average_LogC10)
+SET
+    H_index = NULLIF(@H_index, ''),
+    H_index = IF(@H_index REGEXP '^[0-9]+$', @H_index, NULL), 
+    Average_C10 = NULLIF(@Average_C10, ''),
+    Average_C10 = IF(@Average_C10 REGEXP '^-?[0-9]*\.?[0-9]+$', @Average_C10, NULL), 
+    Average_LogC10 = NULLIF(@Average_LogC10, ''),
+    Average_LogC10 = IF(@Average_LogC10 REGEXP '^-?[0-9]*\.?[0-9]+$', @Average_LogC10, NULL); 
 
 ########################################################################
 ### authors_gender
@@ -65,7 +92,18 @@ CHARACTER SET utf8mb4
 FIELDS TERMINATED BY '\t'  
 ENCLOSED BY '"'            
 LINES TERMINATED BY '\n'   
-IGNORE 1 LINES;            
+IGNORE 1 LINES
+(AuthorID, Author_Name, @H_index, Productivity, @Average_C10, @Average_LogC10, @Inference_Sources, @Inference_Counts, @P_gf)
+SET
+    H_index = NULLIF(@H_index, ''),
+    H_index = IF(@H_index REGEXP '^[0-9]+$', @H_index, NULL), -- 숫자만 허용
+    Average_C10 = NULLIF(@Average_C10, ''),
+    Average_C10 = IF(@Average_C10 REGEXP '^-?[0-9]*\.?[0-9]+$', @Average_C10, NULL), -- 부동소수점만 허용
+    Average_LogC10 = NULLIF(@Average_LogC10, ''),
+    Average_LogC10 = IF(@Average_LogC10 REGEXP '^-?[0-9]*\.?[0-9]+$', @Average_LogC10, NULL), -- 부동소수점만 허용
+    Inference_Sources = NULLIF(@Inference_Sources, ''),
+    Inference_Counts = NULLIF(@Inference_Counts, ''),
+    P_gf = NULLIF(@P_gf, '');         
 
 ########################################################################
 ### conference_series
@@ -280,6 +318,21 @@ SET
 
 ########################################################################
 ### PaperAuthorAffiliations
+CREATE TABLE PaperAuthorAffiliations (
+    PaperID BIGINT,   
+    AuthorID BIGINT,                                  
+    AffiliationID VARCHAR(255),                                 
+    AuthorSequenceNumber INT DEFAULT NULL,
+    PRIMARY KEY (`PaperID`, `AuthorID`, `AffiliationID`)
+);
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_PaperAuthorAffiliations.tsv'
+INTO TABLE `PaperAuthorAffiliations`
+CHARACTER SET utf8mb4  
+FIELDS TERMINATED BY '\t'  
+LINES TERMINATED BY '\n'   
+IGNORE 1 LINES;
+
 
 
 
