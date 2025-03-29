@@ -260,7 +260,7 @@ CREATE TABLE NSF_Metadata (
     NSF_Award_Number VARCHAR(50) PRIMARY KEY,   
     Date DATE,                                  
     Title TEXT,                                 
-    Publication_Research VARCHAR(1000)                   
+    Publication_Research VARCHAR(1500)                   
 );
 
 LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_NSF_Metadata.tsv'
@@ -275,6 +275,6 @@ SET
             WHEN @Date = '' THEN NULL 
             ELSE STR_TO_DATE(@Date, '%m/%d/%Y') 
            END,
-    Publication_Research = LEFT(REPLACE(@Publication_Research, '''', '"'), 1000); -- restrict to 1000 words
+    Publication_Research = LEFT(REPLACE(@Publication_Research, '''', '"'), 1500); -- restrict to 1500 words
 
 
