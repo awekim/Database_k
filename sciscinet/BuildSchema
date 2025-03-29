@@ -44,7 +44,7 @@ SET
 ### authors
 CREATE TABLE `authors` (
     `AuthorID` BIGINT PRIMARY KEY,            
-    `Author_Name` VARCHAR(255) NOT NULL,   
+    `Author_Name` VARCHAR(512) NOT NULL,   
     `H_index` INT DEFAULT NULL,            
     `Productivity` INT DEFAULT NULL,       
     `Average_C10` FLOAT DEFAULT NULL,      
@@ -75,7 +75,7 @@ Get-Content "I:/Data_for_practice/SciSciNet/SciSciNet_Authors_Gender/SciSciNet_A
 DROP TABLE IF EXISTS authors_gender;
 CREATE TABLE `authors_gender` (
     `AuthorID` BIGINT PRIMARY KEY,            
-    `Author_Name` VARCHAR(255) NOT NULL,   
+    `Author_Name` VARCHAR(512) NOT NULL,   
     `H_index` INT DEFAULT NULL,            
     `Productivity` INT DEFAULT NULL,       
     `Average_C10` FLOAT DEFAULT NULL,      
