@@ -241,8 +241,8 @@ IGNORE 1 LINES;
 ########################################################################
 ### Newsfeed_Metadata
 CREATE TABLE `Newsfeed_Metadata` (
-    `NewsfeedID` VARCHAR(255),       
-    `Occurred_Time` DATETIME,                    
+    `NewsfeedID` TEXT,       
+    `Occurred_Time` VARCHAR(50),                    
     `ObjectID` VARCHAR(255),                     
     `Subject_Information` TEXT                   
 );
@@ -250,9 +250,31 @@ CREATE TABLE `Newsfeed_Metadata` (
 LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Newsfeed_Metadata.tsv'
 INTO TABLE `Newsfeed_Metadata`
 CHARACTER SET utf8mb4  
-FIELDS TERMINATED BY '\t'         
-ENCLOSED BY '"'                   
-LINES TERMINATED BY '\n'          
-IGNORE 1 LINES;                   
+FIELDS TERMINATED BY '\t' 
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;            
+
+########################################################################
+### NSF_Metadata
+CREATE TABLE NSF_Metadata (
+    NSF_Award_Number VARCHAR(50) PRIMARY KEY,   
+    Date DATE,                                  
+    Title TEXT,                                 
+    Publication_Research VARCHAR(1000)                   
+);
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_NSF_Metadata.tsv'
+INTO TABLE `NSF_Metadata`
+CHARACTER SET utf8mb4  
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(NSF_Award_Number, @Date, Title, @Publication_Research)
+SET 
+    Date = CASE 
+            WHEN @Date = '' THEN NULL 
+            ELSE STR_TO_DATE(@Date, '%m/%d/%Y') 
+           END,
+    Publication_Research = LEFT(REPLACE(@Publication_Research, '''', '"'), 1000); -- restrict to 1000 words
 
 
