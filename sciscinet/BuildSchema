@@ -64,14 +64,32 @@ IGNORE 1 LINES;                -- 첫 번째 행(헤더)을 무시함
 ########################################################################
 ### conference_series
 CREATE TABLE `sciscinet`.`conference_series` (
-    `ConferenceSeriesID` BIGINT PRIMARY KEY,            -- ConferenceSeriesID (숫자)
-    `Abbr_Name` VARCHAR(255) NOT NULL,               -- Abbr_Name (문자열)
-    `ConferenceSeries_Name` VARCHAR(255) NOT NULL    -- ConferenceSeries_Name (문자열)
+    `ConferenceSeriesID` BIGINT PRIMARY KEY,            
+    `Abbr_Name` VARCHAR(255) NOT NULL,               
+    `ConferenceSeries_Name` VARCHAR(255) NOT NULL    
 );
+
 LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_ConferenceSeries.tsv'
 INTO TABLE sciscinet.conference_series
-CHARACTER SET utf8mb4      -- 파일의 인코딩 설정
-FIELDS TERMINATED BY '\t'      -- 탭으로 구분됨
-ENCLOSED BY '"'                -- 데이터 값이 따옴표로 감싸져 있을 경우
-LINES TERMINATED BY '\n'       -- 각 줄은 줄바꿈으로 구분됨
-IGNORE 1 LINES;                -- 첫 번째 행(헤더)을 무시함
+CHARACTER SET utf8mb4      
+FIELDS TERMINATED BY '\t'  
+ENCLOSED BY '"'            
+LINES TERMINATED BY '\n'    
+IGNORE 1 LINES;             
+
+########################################################################
+### fields
+CREATE TABLE `sciscinet`.`fields` (
+    FieldID INT PRIMARY KEY,            
+    Field_Name VARCHAR(255) NOT NULL,    
+    Field_Type VARCHAR(255) NOT NULL     
+)
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Fields.tsv'
+INTO TABLE sciscinet.`fields`
+CHARACTER SET utf8mb4      
+FIELDS TERMINATED BY '\t'  
+ENCLOSED BY '"'            
+LINES TERMINATED BY '\n'   
+IGNORE 1 LINES;            
+
