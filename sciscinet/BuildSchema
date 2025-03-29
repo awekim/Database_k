@@ -263,6 +263,7 @@ CREATE TABLE NSF_Metadata (
     Publication_Research VARCHAR(1500)                   
 );
 
+### 13826, 305849, 315231, 325246, 325830, 351368, 358722, 367893, 381315, 433510, 483778
 LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_NSF_Metadata.tsv'
 INTO TABLE `NSF_Metadata`
 CHARACTER SET utf8mb4  
@@ -276,5 +277,9 @@ SET
             ELSE STR_TO_DATE(@Date, '%m/%d/%Y') 
            END,
     Publication_Research = LEFT(REPLACE(@Publication_Research, '''', '"'), 1500); -- restrict to 1500 words
+
+########################################################################
+### PaperAuthorAffiliations
+
 
 
