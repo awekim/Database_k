@@ -1,0 +1,77 @@
+# SET GLOBAL local_infile = 1;
+USE sciscinet;
+# SELECT DATABASE();
+# SHOW WARNINGS;
+# SHOW ERRORS;
+# SHOW TABLES FROM sciscinet;
+
+########################################################################
+### affiliations
+CREATE TABLE `sciscinet`.`affiliations` (
+    AffiliationID INT PRIMARY KEY,           
+    Affiliation_Name VARCHAR(255) NOT NULL,   
+    GridID VARCHAR(255) DEFAULT NULL,         
+    Official_Page VARCHAR(255) DEFAULT NULL,  
+    ISO3166Code VARCHAR(3) DEFAULT NULL,      
+    Latitude FLOAT DEFAULT NULL,              
+    Longitude FLOAT DEFAULT NULL,             
+    H_index INT DEFAULT NULL,                 
+    Productivity INT DEFAULT NULL,            
+    Average_C10 FLOAT DEFAULT NULL,           
+    Average_LogC10 FLOAT DEFAULT NULL         
+);
+
+LOAD DATA LOCAL INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Affiliations.tsv'
+INTO TABLE sciscinet.affiliations
+CHARACTER SET utf8mb4      
+FIELDS TERMINATED BY '\t'       
+ENCLOSED BY '"'                 
+LINES TERMINATED BY '\n'        
+IGNORE 1 LINES;                 
+
+########################################################################
+### authors
+
+
+
+########################################################################
+### authors_gender
+# Bash
+Get-Content "I:/Data_for_practice/SciSciNet/SciSciNet_Authors_Gender/SciSciNet_Authors_Gender.tsv" | ForEach-Object { $_ -replace '\s+', "`t" } | Set-Content "I:/Data_for_practice/SciSciNet/SciSciNet_Authors_Gender/SciSciNet_Authors_Gender_new.tsv"
+
+DROP TABLE IF EXISTS authors_gender;
+CREATE TABLE `authors_gender` (
+    `AuthorID` BIGINT PRIMARY KEY,            -- 고유 ID (정수형)
+    `Author_Name` VARCHAR(255) NOT NULL,   -- 저자 이름 (문자열)
+    `H_index` INT DEFAULT NULL,            -- H-index (정수형)
+    `Productivity` INT DEFAULT NULL,       -- 생산성 지표 (정수형)
+    `Average_C10` FLOAT DEFAULT NULL,      -- 평균 C10 (소수점 있는 숫자)
+    `Average_LogC10` FLOAT DEFAULT NULL,   -- 평균 LogC10 (소수점 있는 숫자)
+    `Inference_Sources` FLOAT DEFAULT NULL,-- 추론 소스 (소수점 있는 숫자)
+    `Inference_Counts` FLOAT DEFAULT NULL, -- 추론 횟수 (소수점 있는 숫자)
+    `P_gf` FLOAT DEFAULT NULL              -- P(gf) (확률값, 소수점 포함)
+) 
+ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Authors_Gender/SciSciNet_Authors_Gender.tsv'
+INTO TABLE sciscinet.authors_gender
+CHARACTER SET utf8mb4      -- 파일의 인코딩 설정
+FIELDS TERMINATED BY '\t'      -- 탭으로 구분됨
+ENCLOSED BY '"'                -- 데이터 값이 따옴표로 감싸져 있을 경우
+LINES TERMINATED BY '\n'       -- 각 줄은 줄바꿈으로 구분됨
+IGNORE 1 LINES;                -- 첫 번째 행(헤더)을 무시함
+
+########################################################################
+### conference_series
+CREATE TABLE `sciscinet`.`conference_series` (
+    `ConferenceSeriesID` BIGINT PRIMARY KEY,            -- ConferenceSeriesID (숫자)
+    `Abbr_Name` VARCHAR(255) NOT NULL,               -- Abbr_Name (문자열)
+    `ConferenceSeries_Name` VARCHAR(255) NOT NULL    -- ConferenceSeries_Name (문자열)
+);
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_ConferenceSeries.tsv'
+INTO TABLE sciscinet.conference_series
+CHARACTER SET utf8mb4      -- 파일의 인코딩 설정
+FIELDS TERMINATED BY '\t'      -- 탭으로 구분됨
+ENCLOSED BY '"'                -- 데이터 값이 따옴표로 감싸져 있을 경우
+LINES TERMINATED BY '\n'       -- 각 줄은 줄바꿈으로 구분됨
+IGNORE 1 LINES;                -- 첫 번째 행(헤더)을 무시함
