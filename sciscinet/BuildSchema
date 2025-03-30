@@ -52,7 +52,7 @@ CREATE TABLE `authors` (
 );
 
 LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Authors.tsv'
-INTO TABLE `sciscinet`.`authors_gender`
+INTO TABLE `sciscinet`.`authors`
 CHARACTER SET utf8mb4      
 FIELDS TERMINATED BY '\t'  
 ENCLOSED BY '"'            
