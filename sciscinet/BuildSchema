@@ -333,6 +333,32 @@ FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\n'   
 IGNORE 1 LINES;
 
+########################################################################
+### PaperFields
+CREATE TABLE PaperFields (
+    PaperID BIGINT,
+    FieldID BIGINT,
+    Hit_1pct FLOAT DEFAULT NULL,
+    Hit_5pct FLOAT DEFAULT NULL,
+    Hit_10pct FLOAT DEFAULT NULL,
+    C_f FLOAT DEFAULT NULL,
+    PRIMARY KEY (PaperID, FieldID)
+);
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_PaperFields.tsv'
+INTO TABLE PaperFields
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(PaperID, FieldID, @Hit_1pct, @Hit_5pct, @Hit_10pct, @C_f)
+SET 
+    Hit_1pct = NULLIF(@Hit_1pct, ''), 
+    Hit_5pct = NULLIF(@Hit_5pct, ''), 
+    Hit_10pct = NULLIF(@Hit_10pct, ''), 
+    C_f = NULLIF(@C_f, '');
+
+
 
 
 
