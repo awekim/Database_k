@@ -361,52 +361,73 @@ SET
 ########################################################################
 ### Papers
 CREATE TABLE Papers (
-    PaperID BIGINT PRIMARY KEY,  
-    DOI VARCHAR(255) DEFAULT NULL,  
-    DocType VARCHAR(50) DEFAULT NULL,  
-    PaperTitle TEXT NOT NULL,  
-    BookTitle TEXT DEFAULT NULL,  
-    Year INT DEFAULT NULL,  
-    Date DATE DEFAULT NULL,  
-    Publisher VARCHAR(255) DEFAULT NULL,  
-    JournalID BIGINT DEFAULT NULL,  
-    ConferenceSeriesID BIGINT DEFAULT NULL,  
-    Volume INT DEFAULT NULL,  
-    Issue INT DEFAULT NULL,  
-    FirstPage INT DEFAULT NULL,  
-    LastPage INT DEFAULT NULL,  
-    ReferenceCount INT DEFAULT NULL,  
-    CitationCount INT DEFAULT NULL,  
-    OriginalVenue VARCHAR(255) DEFAULT NULL,  
-    FamilyID BIGINT DEFAULT NULL,  
-    RetractionType VARCHAR(50) DEFAULT NULL  
+    PaperID BIGINT PRIMARY KEY,         
+    DOI VARCHAR(255),                    
+    DocType VARCHAR(50),                  
+    Year INT NULL,  -- NULL 허용 (비어 있는 경우 대비)
+    Date DATE,                           
+    JournalID BIGINT NULL,               
+    ConferenceSeriesID BIGINT NULL,      
+    Citation_Count INT DEFAULT 0,        
+    C10 FLOAT DEFAULT 0,                 
+    Reference_Count INT DEFAULT 0,       
+    C5 FLOAT DEFAULT 0,                  
+    Team_Size INT DEFAULT 1,             
+    Institution_Count INT DEFAULT 1,     
+    Disruption FLOAT DEFAULT 0,          
+    Atyp_10pct_Z FLOAT DEFAULT 0,        
+    Atyp_Pairs INT DEFAULT 0,            
+    Atyp_Median_Z FLOAT DEFAULT 0,       
+    SB_B FLOAT DEFAULT 0,                
+    SB_T FLOAT DEFAULT 0,                
+    Patent_Count INT DEFAULT 0,          
+    Newsfeed_Count INT DEFAULT 0,        
+    Tweet_Count INT DEFAULT 0,           
+    NCT_Count INT DEFAULT 0,             
+    NIH_Count INT DEFAULT 0,             
+    NSF_Count INT DEFAULT 0,             
+    WSB_mu FLOAT DEFAULT 0,              
+    WSB_sigma FLOAT DEFAULT 0,           
+    WSB_Cinf FLOAT DEFAULT 0             
 );
 
 LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Papers.tsv'
 INTO TABLE Papers
 CHARACTER SET utf8mb4
 FIELDS TERMINATED BY '\t'
-LINES TERMINATED BY '\r\n'  
+LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(@col1, @col2, @col3, @col4, @col5, @col6, @col7, @col8, @col9, @col10,
- @col11, @col12, @col13, @col14, @col15, @col16, @col17, @col18, @col19, @ExtraColumn)
-SET
-    PaperID = NULLIF(@col1, ''),
-    DOI = NULLIF(@col2, ''),
-    DocType = NULLIF(@col3, ''),
-    PaperTitle = NULLIF(@col4, ''),
-    BookTitle = NULLIF(@col5, ''),
-    Year = TRUNCATE(NULLIF(@col6, ''), 0),
-    Date = STR_TO_DATE(NULLIF(@col7, ''), '%Y-%m-%d'),
-    Publisher = NULLIF(@col8, ''),
-    JournalID = TRUNCATE(NULLIF(@col9, ''), 0),
-    ConferenceSeriesID = TRUNCATE(NULLIF(@col10, ''), 0),
-    Volume = NULLIF(@col11, ''),
-    Issue = NULLIF(@col12, ''),
-    FirstPage = TRUNCATE(NULLIF(@col13, ''), 0),
-    LastPage = TRUNCATE(NULLIF(@col14, ''), 0),
-    ReferenceCount = TRUNCATE(NULLIF(@col15, ''), 0),
-    CitationCount = TRUNCATE(NULLIF(@col16, ''), 0),
-    OriginalVenue = NULLIF(@col17, ''),
-    FamilyID = TRUNCATE(NULLIF(@col18, ''), 0),
-    RetractionType = NULLIF(@col19, '');
+(@PaperID, @DOI, @DocType, @Year, @Date, @JournalID, @ConferenceSeriesID, 
+@Citation_Count, @C10, @Reference_Count, @C5, @Team_Size, @Institution_Count, 
+@Disruption, @Atyp_10pct_Z, @Atyp_Pairs, @Atyp_Median_Z, @SB_B, @SB_T, 
+@Patent_Count, @Newsfeed_Count, @Tweet_Count, @NCT_Count, @NIH_Count, @NSF_Count, 
+@WSB_mu, @WSB_sigma, @WSB_Cinf)
+SET 
+    PaperID = NULLIF(@PaperID, ''),  
+    DOI = NULLIF(@DOI, ''),  
+    DocType = NULLIF(@DocType, ''),  
+    Year = NULLIF(@Year, ''),  
+    Date = STR_TO_DATE(NULLIF(@Date, ''), '%Y-%m-%d'),  
+    JournalID = NULLIF(@JournalID, ''),  
+    ConferenceSeriesID = NULLIF(@ConferenceSeriesID, ''),  
+    Citation_Count = IFNULL(NULLIF(@Citation_Count, ''), 0),  
+    C10 = IFNULL(NULLIF(@C10, ''), 0),  
+    Reference_Count = IFNULL(NULLIF(@Reference_Count, ''), 0),  
+    C5 = IFNULL(NULLIF(@C5, ''), 0),  
+    Team_Size = IFNULL(NULLIF(@Team_Size, ''), 1),  
+    Institution_Count = IFNULL(NULLIF(@Institution_Count, ''), 1),  -- 🔥 여기 해결
+    Disruption = IFNULL(NULLIF(@Disruption, ''), 0),  
+    Atyp_10pct_Z = IFNULL(NULLIF(@Atyp_10pct_Z, ''), 0),  
+    Atyp_Pairs = IFNULL(NULLIF(@Atyp_Pairs, ''), 0),  
+    Atyp_Median_Z = IFNULL(NULLIF(@Atyp_Median_Z, ''), 0),  
+    SB_B = IFNULL(NULLIF(@SB_B, ''), 0),  
+    SB_T = IFNULL(NULLIF(@SB_T, ''), 0),  
+    Patent_Count = IFNULL(NULLIF(@Patent_Count, ''), 0),  
+    Newsfeed_Count = IFNULL(NULLIF(@Newsfeed_Count, ''), 0),  
+    Tweet_Count = IFNULL(NULLIF(@Tweet_Count, ''), 0),  
+    NCT_Count = IFNULL(NULLIF(@NCT_Count, ''), 0),  
+    NIH_Count = IFNULL(NULLIF(@NIH_Count, ''), 0),  
+    NSF_Count = IFNULL(NULLIF(@NSF_Count, ''), 0),  
+    WSB_mu = IFNULL(NULLIF(@WSB_mu, ''), 0),  
+    WSB_sigma = IFNULL(NULLIF(@WSB_sigma, ''), 0),  
+    WSB_Cinf = IFNULL(NULLIF(@WSB_Cinf, ''), 0);
