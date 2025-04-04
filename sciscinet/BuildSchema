@@ -364,8 +364,8 @@ CREATE TABLE Papers (
     PaperID BIGINT PRIMARY KEY,         
     DOI VARCHAR(255),                    
     DocType VARCHAR(50),                  
-    Year INT NULL,  -- NULL 허용 (비어 있는 경우 대비)
-    Date DATE,                           
+    Year INT NULL,  
+    Date VARCHAR(20) NULL,                           
     JournalID BIGINT NULL,               
     ConferenceSeriesID BIGINT NULL,      
     Citation_Count INT DEFAULT 0,        
@@ -397,6 +397,24 @@ CHARACTER SET utf8mb4
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
+(@PaperID, @DOI, @DocType, @Year, @Date, @JournalID, @ConferenceSeriesID, @Citation_Count, @C10, 
+ @Reference_Count, @C5, @Team_Size, @Institution_Count, @Disruption, @Atyp_10pct_Z, @Atyp_Pairs, 
+ @Atyp_Median_Z, @SB_B, @SB_T, @Patent_Count, @Newsfeed_Count, @Tweet_Count, @NCT_Count, @NIH_Count, 
+ @NSF_Count, @WSB_mu, @WSB_sigma, @WSB_Cinf)
+SET 
+    PaperID = NULLIF(@PaperID, ''),  
+    DOI = NULLIF(@DOI, ''),
+    DocType = NULLIF(@DocType, ''),
+    Date = NULLIF(@Date, ''),
+    JournalID = NULLIF(@JournalID, ''),
+    ConferenceSeriesID = NULLIF(@ConferenceSeriesID, '');  
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_Papers.tsv'
+INTO TABLE Papers
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
 (@PaperID, @DOI, @DocType, @Year, @Date, @JournalID, @ConferenceSeriesID, 
 @Citation_Count, @C10, @Reference_Count, @C5, @Team_Size, @Institution_Count, 
 @Disruption, @Atyp_10pct_Z, @Atyp_Pairs, @Atyp_Median_Z, @SB_B, @SB_T, 
@@ -415,7 +433,7 @@ SET
     Reference_Count = IFNULL(NULLIF(@Reference_Count, ''), 0),  
     C5 = IFNULL(NULLIF(@C5, ''), 0),  
     Team_Size = IFNULL(NULLIF(@Team_Size, ''), 1),  
-    Institution_Count = IFNULL(NULLIF(@Institution_Count, ''), 1),  -- 🔥 여기 해결
+    Institution_Count = IFNULL(NULLIF(@Institution_Count, ''), 1),  
     Disruption = IFNULL(NULLIF(@Disruption, ''), 0),  
     Atyp_10pct_Z = IFNULL(NULLIF(@Atyp_10pct_Z, ''), 0),  
     Atyp_Pairs = IFNULL(NULLIF(@Atyp_Pairs, ''), 0),  
