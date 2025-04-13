@@ -445,7 +445,7 @@ CREATE TABLE PaperDetails (
     Date DATE,
     Publisher TEXT,
     JournalID BIGINT,
-    ConferenceSeriesID BIGINT,
+    ConferenceSeriesID BIGINT NULL,
     Volume VARCHAR(50),
     Issue VARCHAR(50),
     FirstPage VARCHAR(50),
@@ -457,13 +457,22 @@ CREATE TABLE PaperDetails (
     RetractionType TEXT
 );
 
-LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_PaperDetails.tsv/SciSciNet_PaperDetails.tsv'
+SET sql_mode = '';
+
+# Use _fixed.tsv
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_PaperDetails.tsv/SciSciNet_PaperDetails_fixed.tsv'
 INTO TABLE PaperDetails
 CHARACTER SET utf8mb4
 FIELDS TERMINATED BY '\t'
 OPTIONALLY ENCLOSED BY '"' 
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(PaperID, DOI, DocType, PaperTitle, BookTitle, Year, Date, Publisher, JournalID, ConferenceSeriesID,
- Volume, Issue, FirstPage, LastPage, ReferenceCount, CitationCount, OriginalVenue, FamilyID, RetractionType);
+(PaperID, DOI, DocType, PaperTitle, BookTitle, Year, Date, Publisher, @JournalID,
+ @ConferenceSeriesID, Volume, Issue, FirstPage, LastPage, ReferenceCount, CitationCount,
+ OriginalVenue, @FamilyID, RetractionType)
+SET
+ JournalID = NULLIF(@JournalID, ''),
+ ConferenceSeriesID = NULLIF(@ConferenceSeriesID, ''),
+ FamilyID = NULLIF(@FamilyID, '');
 
