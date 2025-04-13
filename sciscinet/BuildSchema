@@ -364,8 +364,8 @@ CREATE TABLE Papers (
     PaperID BIGINT PRIMARY KEY,         
     DOI VARCHAR(255),                    
     DocType VARCHAR(50),                  
-    Year INT NULL,  -- NULL 허용 (비어 있는 경우 대비)
-    Date DATE,                           
+    Year INT NULL,  
+    Date VARCHAR(20) NULL,                           
     JournalID BIGINT NULL,               
     ConferenceSeriesID BIGINT NULL,      
     Citation_Count INT DEFAULT 0,        
@@ -415,7 +415,7 @@ SET
     Reference_Count = IFNULL(NULLIF(@Reference_Count, ''), 0),  
     C5 = IFNULL(NULLIF(@C5, ''), 0),  
     Team_Size = IFNULL(NULLIF(@Team_Size, ''), 1),  
-    Institution_Count = IFNULL(NULLIF(@Institution_Count, ''), 1),  -- 🔥 여기 해결
+    Institution_Count = IFNULL(NULLIF(@Institution_Count, ''), 1),  
     Disruption = IFNULL(NULLIF(@Disruption, ''), 0),  
     Atyp_10pct_Z = IFNULL(NULLIF(@Atyp_10pct_Z, ''), 0),  
     Atyp_Pairs = IFNULL(NULLIF(@Atyp_Pairs, ''), 0),  
@@ -431,3 +431,48 @@ SET
     WSB_mu = IFNULL(NULLIF(@WSB_mu, ''), 0),  
     WSB_sigma = IFNULL(NULLIF(@WSB_sigma, ''), 0),  
     WSB_Cinf = IFNULL(NULLIF(@WSB_Cinf, ''), 0);
+
+
+########################################################################
+### paperdetails
+CREATE TABLE PaperDetails (
+    PaperID BIGINT,
+    DOI VARCHAR(255),
+    DocType VARCHAR(50),
+    PaperTitle TEXT,
+    BookTitle TEXT,
+    Year FLOAT,
+    Date DATE,
+    Publisher TEXT,
+    JournalID BIGINT,
+    ConferenceSeriesID BIGINT NULL,
+    Volume VARCHAR(50),
+    Issue VARCHAR(50),
+    FirstPage VARCHAR(50),
+    LastPage VARCHAR(50),
+    ReferenceCount INT,
+    CitationCount INT,
+    OriginalVenue TEXT,
+    FamilyID BIGINT,
+    RetractionType TEXT
+);
+
+SET sql_mode = '';
+
+# Use _fixed.tsv
+
+LOAD DATA INFILE 'I:/Data_for_practice/SciSciNet/SciSciNet_PaperDetails.tsv/SciSciNet_PaperDetails_fixed.tsv'
+INTO TABLE PaperDetails
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY '\t'
+OPTIONALLY ENCLOSED BY '"' 
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(PaperID, DOI, DocType, PaperTitle, BookTitle, Year, Date, Publisher, @JournalID,
+ @ConferenceSeriesID, Volume, Issue, FirstPage, LastPage, ReferenceCount, CitationCount,
+ OriginalVenue, @FamilyID, RetractionType)
+SET
+ JournalID = NULLIF(@JournalID, ''),
+ ConferenceSeriesID = NULLIF(@ConferenceSeriesID, ''),
+ FamilyID = NULLIF(@FamilyID, '');
+
